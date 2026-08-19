@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 224 76% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 25% 45%;
+    --accent: 214 32% 91%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 88%;
+    --input: 214 32% 91%;
+    --ring: 224 76% 48%;
+    --radius: 0.625rem;
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 64px;
+    --topnav-height: 56px;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 96%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 96%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 32% 18%;
+    --input: 217 32% 17%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+@layer components {
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer;
+  }
+  .sidebar-item:hover {
+    @apply bg-accent text-accent-foreground;
+  }
+  .sidebar-item.active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .token-keyword { @apply text-purple-600 dark:text-purple-400 font-semibold; }
+  .token-identifier { @apply text-blue-600 dark:text-blue-400; }
+  .token-operator { @apply text-red-600 dark:text-red-400; }
+  .token-constant { @apply text-amber-600 dark:text-amber-400; }
+  .token-symbol { @apply text-emerald-600 dark:text-emerald-400; }
+  .token-string { @apply text-cyan-600 dark:text-cyan-400; }
+  .token-comment { @apply text-gray-500 dark:text-gray-500 italic; }
+
+  .phase-card {
+    @apply relative p-4 rounded-xl border bg-card transition-all duration-200 cursor-pointer;
+  }
+  .phase-card:hover {
+    @apply border-primary shadow-lg shadow-primary/10;
+  }
+  .phase-card.active {
+    @apply border-primary bg-primary/5 shadow-lg shadow-primary/20;
+  }
+
+  .stat-card {
+    @apply bg-card border rounded-xl p-5 flex flex-col gap-2;
+  }
+
+  .badge-pill {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .code-output {
+    @apply font-mono text-sm bg-muted rounded-lg p-4 overflow-auto whitespace-pre;
+  }
+
+  .skeleton {
+    @apply bg-muted animate-pulse rounded;
+  }
+
+  .section-header {
+    @apply text-lg font-semibold text-foreground mb-4 flex items-center gap-2;
+  }
+
+  .tab-btn {
+    @apply px-4 py-2 text-sm font-medium rounded-lg transition-all duration-150;
+  }
+  .tab-btn.active {
+    @apply bg-primary text-primary-foreground;
+  }
+  .tab-btn:not(.active) {
+    @apply text-muted-foreground hover:text-foreground hover:bg-accent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/40; }
+
+/* Monaco editor overrides */
+.monaco-editor .margin { background: transparent !important; }
+
+/* React Flow */
+.react-flow__node { font-family: 'Inter', sans-serif; }
